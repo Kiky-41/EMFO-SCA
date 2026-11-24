@@ -70,7 +70,7 @@ The random angle $2\pi r_3$ decides the direction, $r_2$ scales the move, and th
 
 After each iteration the incumbent is rescaled to the demand and clipped to the unit limits:
 
-$$\mathbf{x}^{*}\leftarrow\operatorname{clip}\!\left(\mathbf{x}^{*}\frac{P_D}{\sum_i x_i^{*}},\;\mathbf{P}^{\min},\;\mathbf{P}^{\max}\right).$$
+$$\mathbf{x}^{*}\leftarrow\operatorname{clip}\left(\mathbf{x}^{*}\frac{P_D}{\sum_i x_i^{*}},\quad\mathbf{P}^{\min},\quad\mathbf{P}^{\max}\right).$$
 
 The rescaling preserves the shape of the incumbent while enforcing the total output; the clip then restores individual limits. The population is 50, the iteration cap is 100, and the run stops early when $\left|P_D-\sum_ix_i\right|<10^{-4}$ MW.
 

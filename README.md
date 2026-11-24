@@ -60,7 +60,7 @@ After the EMFO move, each particle is perturbed again with the sine–cosine rul
 
 $$\mathbf{x}_i\leftarrow
 \begin{cases}
-\mathbf{x}_i+\beta r_2\sin(2\pi r_3)\left(\mathbf{x}^{*}-\mathbf{x}_i\right), & r_1<0.5,\\[4pt]
+\mathbf{x}_i+\beta r_2\sin(2\pi r_3)\left(\mathbf{x}^{*}-\mathbf{x}_i\right), & r_1<0.5,\\
 \mathbf{x}_i+\beta r_2\cos(2\pi r_3)\left(\mathbf{x}^{*}-\mathbf{x}_i\right), & r_1\ge0.5.
 \end{cases}$$
 

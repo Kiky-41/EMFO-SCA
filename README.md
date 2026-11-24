@@ -105,10 +105,15 @@ Input data is **not included**. Place files in `data/` (notebooks) or next to th
 
 ## Results
 
-### Result files
-
-- [`results/EMFO-SCA.xlsx`](results/EMFO-SCA.xlsx)
-- [`results/KKA.xlsx`](results/KKA.xlsx)
+| Metric | Value |
+|---|---|
+| Test case | 7-unit Sulselbar 150 kV |
+| Baseline | Kho-Kho algorithm on the same load profile |
+| Population / iterations | 50 / 100 |
+| Stopping rule | balance error below $10^{-4}$ MW |
+| Stored output | per-unit schedule and cost in `results/` |
+| Result file | [`results/EMFO-SCA.xlsx`](results/EMFO-SCA.xlsx) |
+| Result file | [`results/KKA.xlsx`](results/KKA.xlsx) |
 
 
 ## Requirements

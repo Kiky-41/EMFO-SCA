@@ -31,7 +31,7 @@ The first term is the fuel cost and the second term grows with any mismatch betw
 |---|---|---|
 | $N$ | number of units | – |
 | $\mathbf{x}_i$ | position (dispatch) of particle $i$ | MW |
-| $\mathbf{x}^{*}$ | best position found so far | MW |
+| $\mathbf{x}^{\ast}$ | best position found so far | MW |
 | $J$ | penalised fitness | USD/h |
 | $\rho$ | penalty coefficient | USD/MWh |
 | $\alpha$ | attraction coefficient | – |
@@ -50,7 +50,7 @@ $$A_i=\alpha e^{-\sigma t/T}\left(2r_{1,i}-1\right),\qquad B_i=\alpha e^{-\sigma
 
 The exponential factor weakens the attraction as the run proceeds, and the cosine term gives the update an oscillating component. The position update is
 
-$$\mathbf{x}_i\leftarrow\mathbf{x}_i+A_i\odot\left(\mathbf{x}^{*}-\mathbf{x}_i\right)+B_i\odot C_i.$$
+$$\mathbf{x}_i\leftarrow\mathbf{x}_i+A_i\odot\left(\mathbf{x}^{\ast}-\mathbf{x}_i\right)+B_i\odot C_i.$$
 
 The first term moves the particle toward the best solution, scaled per coordinate; the second adds a bounded exploration offset. The reported settings are $\alpha=0.5$ and $\sigma=0.5$.
 
@@ -60,8 +60,8 @@ After the EMFO move, each particle is perturbed again with the sine–cosine rul
 
 $$\mathbf{x}_i\leftarrow
 \begin{cases}
-\mathbf{x}_i+\beta r_2\sin(2\pi r_3)\left(\mathbf{x}^{*}-\mathbf{x}_i\right), & r_1<0.5,\\
-\mathbf{x}_i+\beta r_2\cos(2\pi r_3)\left(\mathbf{x}^{*}-\mathbf{x}_i\right), & r_1\ge0.5.
+\mathbf{x}_i+\beta r_2\sin(2\pi r_3)\left(\mathbf{x}^{\ast}-\mathbf{x}_i\right), & r_1<0.5,\\
+\mathbf{x}_i+\beta r_2\cos(2\pi r_3)\left(\mathbf{x}^{\ast}-\mathbf{x}_i\right), & r_1\ge0.5.
 \end{cases}$$
 
 The random angle $2\pi r_3$ decides the direction, $r_2$ scales the move, and the sine/cosine switch balances outward exploration and inward exploitation. The reported amplitude is $\beta=0.5$.
@@ -70,7 +70,7 @@ The random angle $2\pi r_3$ decides the direction, $r_2$ scales the move, and th
 
 After each iteration the incumbent is rescaled to the demand and clipped to the unit limits:
 
-$$\mathbf{x}^{*}\leftarrow\operatorname{clip}\left(\mathbf{x}^{*}\frac{P_D}{\sum_i x_i^{*}},\quad\mathbf{P}^{\min},\quad\mathbf{P}^{\max}\right).$$
+$$\mathbf{x}^{\ast}\leftarrow\operatorname{clip}\left(\mathbf{x}^{\ast}\frac{P_D}{\sum_i x_i^{\ast}},\quad\mathbf{P}^{\min},\quad\mathbf{P}^{\max}\right).$$
 
 The rescaling preserves the shape of the incumbent while enforcing the total output; the clip then restores individual limits. The population is 50, the iteration cap is 100, and the run stops early when $\left|P_D-\sum_ix_i\right|<10^{-4}$ MW.
 

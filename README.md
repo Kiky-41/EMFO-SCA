@@ -128,10 +128,7 @@ Summed over the day the hybrid costs 4,859,180.93 against 4,872,095.04 for KKA, 
 
 ### Result workbooks
 
-| File | Content |
-|---|---|
-| [`results/EMFO-SCA.xlsx`](results/EMFO-SCA.xlsx) | raw output |
-| [`results/KKA.xlsx`](results/KKA.xlsx) | raw output |
+Raw solver output: [`results/EMFO-SCA.xlsx`](results/EMFO-SCA.xlsx), [`results/KKA.xlsx`](results/KKA.xlsx).
 
 The workbooks hold the raw solver output behind the tables above: per-unit schedules, per-hour costs, constraint checks and run statistics.
 

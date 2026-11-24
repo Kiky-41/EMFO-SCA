@@ -28,20 +28,14 @@ The first term is the fuel cost and the second term grows with any mismatch betw
 
 ### Notation
 
-| Symbol | Meaning | Unit |
-|---|---|---|
-| $N$ | number of units | – |
-| $\mathbf{x}_i$ | position (dispatch) of particle $i$ | MW |
-| $\mathbf{x}^{\ast}$ | best position found so far | MW |
-| $J$ | penalised fitness | USD/h |
-| $\rho$ | penalty coefficient | USD/MWh |
-| $\alpha$ | attraction coefficient | – |
-| $\beta$ | sine–cosine amplitude factor | – |
-| $\sigma$ | decay factor of the EMFO term | – |
-| $t,T$ | current iteration and iteration cap | – |
-| $r_1,r_2,r_3$ | uniform random numbers in $[0,1]$ | – |
-| $A_i,B_i,C_i$ | EMFO coefficient vectors | – |
-| $P_D$ | demand | MW |
+| Symbol | Meaning | Symbol | Meaning |
+|---|---|---|---|
+| $N$ | number of units | $\beta$ | sine–cosine amplitude factor |
+| $\mathbf{x}_i$ | position (dispatch) of particle $i$ (MW) | $\sigma$ | decay factor of the EMFO term |
+| $\mathbf{x}^{\ast}$ | best position found so far (MW) | $t,T$ | current iteration and iteration cap |
+| $J$ | penalised fitness (USD/h) | $r_1,r_2,r_3$ | uniform random numbers in $[0,1]$ |
+| $\rho$ | penalty coefficient (USD/MWh) | $A_i,B_i,C_i$ | EMFO coefficient vectors |
+| $\alpha$ | attraction coefficient | $P_D$ | demand (MW) |
 
 ### EMFO stage
 

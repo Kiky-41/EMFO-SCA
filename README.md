@@ -60,7 +60,7 @@ After the EMFO move, each particle is perturbed again with the sine–cosine rul
 
 $$\mathbf{x}_i\leftarrow
 \begin{cases}
-\mathbf{x}_i+\beta r_2\sin(2\pi r_3)\left(\mathbf{x}^{\ast}-\mathbf{x}_i\right), & r_1<0.5,\\
+\mathbf{x}_i+\beta r_2\sin(2\pi r_3)\left(\mathbf{x}^{\ast}-\mathbf{x}_i\right), & r_1\lt0.5,\\
 \mathbf{x}_i+\beta r_2\cos(2\pi r_3)\left(\mathbf{x}^{\ast}-\mathbf{x}_i\right), & r_1\ge0.5.
 \end{cases}$$
 
@@ -72,7 +72,7 @@ After each iteration the incumbent is rescaled to the demand and clipped to the 
 
 $$\mathbf{x}^{\ast}\leftarrow\operatorname{clip}\left(\mathbf{x}^{\ast}\frac{P_D}{\sum_i x_i^{\ast}},\quad\mathbf{P}^{\min},\quad\mathbf{P}^{\max}\right).$$
 
-The rescaling preserves the shape of the incumbent while enforcing the total output; the clip then restores individual limits. The population is 50, the iteration cap is 100, and the run stops early when $\left|P_D-\sum_ix_i\right|<10^{-4}$ MW.
+The rescaling preserves the shape of the incumbent while enforcing the total output; the clip then restores individual limits. The population is 50, the iteration cap is 100, and the run stops early when $\left|P_D-\sum_ix_i\right|\lt10^{-4}$ MW.
 
 ### Implementation note
 

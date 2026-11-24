@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this code or results, you must cite the paper below (CC BY 4.0 attribution requirement)."
+title: "EMFO-SCA: Reducing Operational Costs in Sulselbar’s 150 kV System with Electromagnetic Field and Sine-Cosine Optimization"
+type: software
+license: CC-BY-4.0
+repository-code: "https://github.com/Kiky-41/EMFO-SCA"
+authors:
+  - family-names: "Ikhsan"
+    given-names: "Rifki Rahman Nur"
+  - family-names: "Marsuki"
+    given-names: "Aminah Indahsari"
+  - family-names: "Wijaya"
+    given-names: "I Gede Putu Oka Indra"
+preferred-citation:
+  type: article
+  title: "Reducing Operational Costs in Sulselbar’s 150 kV System with Electromagnetic Field and Sine-Cosine Optimization"
+  authors:
+    - family-names: "Ikhsan"
+      given-names: "Rifki Rahman Nur"
+    - family-names: "Marsuki"
+      given-names: "Aminah Indahsari"
+    - family-names: "Wijaya"
+      given-names: "I Gede Putu Oka Indra"
+  journal: "JAREE (Journal on Advanced Research in Electrical Engineering)"
+  year: 2025
+  doi: 10.12962/jaree.v9i1.458

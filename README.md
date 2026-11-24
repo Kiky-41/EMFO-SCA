@@ -42,3 +42,11 @@ Python. Python notebooks: `numpy`, `pandas`, `scipy`, `matplotlib` (as imported)
 ```bibtex
 @article{Ikhsan_2025, title={Reducing Operational Costs in Sulselbar’s 150 kV System with Electromagnetic Field and Sine-Cosine Optimization}, volume={9}, ISSN={2580-0361}, url={http://dx.doi.org/10.12962/jaree.v9i1.458}, DOI={10.12962/jaree.v9i1.458}, number={1}, journal={JAREE (Journal on Advanced Research in Electrical Engineering)}, publisher={Lembaga Penelitian dan Pengabdian kepada Masyarakat ITS}, author={Ikhsan, Rifki Rahman Nur and Marsuki, Aminah Indahsari and Wijaya, I Gede Putu Oka Indra}, year={2025}, month=Feb }
 ```
+
+## License
+
+[![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](LICENSE)
+
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). **Attribution is required**: any use of this code, results, or figures, including in publications, must cite:
+
+> Rifki Rahman Nur Ikhsan; Aminah Indahsari Marsuki; I Gede Putu Oka Indra Wijaya (2025). Reducing Operational Costs in Sulselbar’s 150 kV System with Electromagnetic Field and Sine-Cosine Optimization. *JAREE (Journal on Advanced Research in Electrical Engineering)*. https://doi.org/10.12962/jaree.v9i1.458

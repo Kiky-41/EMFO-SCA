@@ -135,12 +135,16 @@ Input data is **not included**. Place files in `data/` (notebooks) or next to th
 | 521.52 | 332,483.75 | 0.0009 | 309,694.01 | 0.0039 | -22,789.74 |
 | 7,447.46 | 4,859,180.93 | 0.1663 | 4,872,095.04 | 0.0508 | 12,914.11 |
 
+EMFO-SCA is cheaper on 14 of the 25 load levels by 0.93% on average, with a best gain of 20.91% and a worst loss of 22.01%. The hybrid does not dominate level by level, so the claim is an average improvement rather than uniform superiority. Mean run time is 0.0133 s against 0.0041 s for KKA.
+
 ### Result workbooks
 
 | File | Content |
 |---|---|
 | [`results/EMFO-SCA.xlsx`](results/EMFO-SCA.xlsx) | raw output |
 | [`results/KKA.xlsx`](results/KKA.xlsx) | raw output |
+
+The workbooks hold the raw solver output behind the tables above: per-unit schedules, per-hour costs, constraint checks and run statistics.
 
 
 ## Requirements

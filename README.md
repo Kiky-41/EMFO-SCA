@@ -12,6 +12,47 @@ Hybrid Electromagnetic Field Optimization + Sine-Cosine Algorithm for dynamic ec
 
 Dynamic economic dispatch (DED) is a crucial task in modern power systems, requiring efficient optimization to minimize generation costs while satisfying operational constraints. This study introduces a Hybrid Electromagnetic Field Optimization with Sine-Cosine Algorithm (EMFO-SCA) tailored to address the unique challenges of the Sulselbar 150 kV power system. Specifically, the algorithm is designed to handle non-linear cost functions, complex constraints, and dynamic load variations across a 24-hour scheduling period. EMFO-SCA achieves a balanced integration of global exploration (via Electromagnetic Field Optimization) and local exploitation (via the Sine-Cosine Algorithm), resulting in robust optimization performance. Applied to a system with seven active generator buses, EMFO-SCA demonstrates an average operational cost reduction of 0.27% compared to the Kho-Kho Algorithm (KKA). This improvement translates to measurable cost savings while maintaining strict adherence to generation limits, ramp rate constraints, and power balance at all intervals. For instance, during peak demand at 521.52 MW (hour 12), the method effectively minimizes costs without compromising operational reliability. The dual-phase design of EMFO-SCA enables faster convergence and higher accuracy than conventional methods, making it a scalable solution for real-world DED challenges. By optimizing power generation schedules dynamically and reliably, this study establishes EMFO-SCA as a significant advancement in energy system optimization, with clear potential for practical deployment in similar power systems.
 
+
+## Proposed method
+
+EMFO-SCA is a two-stage hybrid. Electromagnetic field optimisation (EMFO) supplies the attraction term that pulls the swarm toward the incumbent best, and the sine–cosine algorithm (SCA) supplies the oscillating perturbation that switches between sine and cosine. Both stages share one global best, and a scaling repair restores the power balance after every iteration.
+
+### Fitness
+
+Demand is handled with a penalty, so the search minimises
+
+$$J(\mathbf{P})=\sum_{i=1}^{N}\left(a_i+b_iP_i+c_iP_i^2\right)+\rho\left|P_D-\sum_{i=1}^{N}P_i\right|,\qquad \rho=10^{4}$$
+
+### EMFO stage
+
+For particle $i$ at iteration $t$ of $T$, with random vectors $r_1,r_2\sim\mathcal{U}(0,1)^N$:
+
+$$A_i=\alpha e^{-\sigma t/T}\left(2r_{1,i}-1\right),\qquad B_i=\alpha e^{-\sigma t/T}\left(2r_{2,i}-1\right),\qquad C_i=e^{-\sigma t/T}\cos\left(2\pi r_{1,i}\right)$$
+
+$$\mathbf{x}_i\leftarrow\mathbf{x}_i+A_i\odot\left(\mathbf{x}^*-\mathbf{x}_i\right)+B_i\odot C_i$$
+
+with $\alpha=0.5$, $\sigma=0.5$.
+
+### SCA stage
+
+With independent $r_1,r_2,r_3\sim\mathcal{U}(0,1)$:
+
+$$\mathbf{x}_i\leftarrow
+\begin{cases}
+\mathbf{x}_i+\beta r_2\sin(2\pi r_3)\left(\mathbf{x}^*-\mathbf{x}_i\right), & r_1<0.5\\[4pt]
+\mathbf{x}_i+\beta r_2\cos(2\pi r_3)\left(\mathbf{x}^*-\mathbf{x}_i\right), & r_1\ge0.5
+\end{cases}$$
+
+with $\beta=0.5$.
+
+### Repair and parameters
+
+After each iteration the incumbent is rescaled to the demand and clipped to the unit limits:
+
+$$\mathbf{x}^*\leftarrow\operatorname{clip}\!\left(\mathbf{x}^*\frac{P_D}{\sum_i x_i^*},\;\mathbf{P}^{\min},\;\mathbf{P}^{\max}\right)$$
+
+Population 50, iterations 100, stop when $\left|P_D-\sum_ix_i\right|<10^{-4}$ MW. Ramp limits are checked after convergence, and the resulting cost is compared with the Kho-Kho algorithm on the same 7-unit Sulselbar load profile.
+
 ## Contents
 
 ```

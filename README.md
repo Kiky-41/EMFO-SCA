@@ -13,6 +13,7 @@ Hybrid Electromagnetic Field Optimization + Sine-Cosine Algorithm for dynamic ec
 Dynamic economic dispatch (DED) is a crucial task in modern power systems, requiring efficient optimization to minimize generation costs while satisfying operational constraints. This study introduces a Hybrid Electromagnetic Field Optimization with Sine-Cosine Algorithm (EMFO-SCA) tailored to address the unique challenges of the Sulselbar 150 kV power system. Specifically, the algorithm is designed to handle non-linear cost functions, complex constraints, and dynamic load variations across a 24-hour scheduling period. EMFO-SCA achieves a balanced integration of global exploration (via Electromagnetic Field Optimization) and local exploitation (via the Sine-Cosine Algorithm), resulting in robust optimization performance. Applied to a system with seven active generator buses, EMFO-SCA demonstrates an average operational cost reduction of 0.27% compared to the Kho-Kho Algorithm (KKA). This improvement translates to measurable cost savings while maintaining strict adherence to generation limits, ramp rate constraints, and power balance at all intervals. For instance, during peak demand at 521.52 MW (hour 12), the method effectively minimizes costs without compromising operational reliability. The dual-phase design of EMFO-SCA enables faster convergence and higher accuracy than conventional methods, making it a scalable solution for real-world DED challenges. By optimizing power generation schedules dynamically and reliably, this study establishes EMFO-SCA as a significant advancement in energy system optimization, with clear potential for practical deployment in similar power systems.
 
 
+
 ## Proposed method
 
 EMFO-SCA is a two-stage hybrid. Electromagnetic field optimisation (EMFO) supplies an attraction term that pulls each particle toward the incumbent best, and the sine–cosine algorithm (SCA) supplies an oscillating perturbation that alternates between sine and cosine. Both stages share one global best, and a scaling repair restores the power balance after every iteration. The method is tested on the 7-unit Sulselbar 150 kV system and compared with the Kho-Kho algorithm.
@@ -70,13 +71,15 @@ The random angle $2\pi r_3$ decides the direction, $r_2$ scales the move, and th
 
 After each iteration the incumbent is rescaled to the demand and clipped to the unit limits:
 
-$$\mathbf{x}^{\ast}\leftarrow\operatorname{clip}\left(\mathbf{x}^{\ast}\frac{P_D}{\sum_i x_i^{\ast}},\quad\mathbf{P}^{\min},\quad\mathbf{P}^{\max}\right).$$
+$$\mathbf{x}^{\ast}\leftarrow\mathrm{clip}\left(\mathbf{x}^{\ast}\frac{P_D}{\sum_i x_i^{\ast}},\quad\mathbf{P}^{\min},\quad\mathbf{P}^{\max}\right).$$
 
 The rescaling preserves the shape of the incumbent while enforcing the total output; the clip then restores individual limits. The population is 50, the iteration cap is 100, and the run stops early when $\left|P_D-\sum_ix_i\right|\lt10^{-4}$ MW.
 
 ### Implementation note
 
 The reporting helper `calculate_fuel_cost` evaluates $a_iP_i^2+b_iP_i+c_i$, while the fitness function uses $a_i+b_iP_i+c_iP_i^2$. For the Sulselbar coefficients the constant and quadratic terms are both very small, so the difference is negligible in the reported cost, but the two expressions are not identical. The README follows the paper and the fitness function.
+### Reported result
+The hybrid is run on the 7-unit Sulselbar 150 kV load profile and benchmarked against the Kho-Kho algorithm on the same data; the per-unit schedule and cost of both methods are stored in `results/`.
 
 ## Contents
 
@@ -98,6 +101,15 @@ Input data is **not included**. Place files in `data/` (notebooks) or next to th
 |---|---|
 | `input7u.xlsx` | Sheet1: `Unit`, `a`, `b`, `c`, `pmin`, `pmax`, `rampup`, `rampdown` |
 | `power_demand7u.xlsx` | Sheet1: `load`, `hour` |
+
+
+## Results
+
+### Result files
+
+- [`results/EMFO-SCA.xlsx`](results/EMFO-SCA.xlsx)
+- [`results/KKA.xlsx`](results/KKA.xlsx)
+
 
 ## Requirements
 
